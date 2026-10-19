@@ -157,9 +157,16 @@ section{padding:64px 0}
 .big-title{font-size:clamp(3.1rem,13.5vw,8.2rem);font-weight:400;line-height:.92;letter-spacing:-.03em}
 .big-title .l2{display:block;font-style:italic;font-weight:400;color:var(--milk);padding-left:.55em}
 .s-lead{margin:24px 0 0;font-size:1.1rem;max-width:31em}
-.s-photos{display:grid;grid-template-columns:1fr .66fr;gap:14px;align-items:end;padding:0 12px 12px 0}
-.s-photos .p1{aspect-ratio:4/5;border-radius:2px;box-shadow:12px 12px 0 -1px var(--cream), 12px 12px 0 0 var(--brass)}
-.s-photos .p2{aspect-ratio:3/4;border-radius:2px;margin-bottom:-12px}
+.s-emblem{position:relative;margin:0 12px 12px 0;max-width:460px;width:calc(100% - 12px);justify-self:start;display:flex;flex-direction:column;align-items:center;justify-content:center;gap:24px;padding:48px 36px 46px;border-radius:2px;overflow:hidden;isolation:isolate;text-align:center;
+  background:linear-gradient(118deg, rgba(255,255,255,0) 30%, rgba(255,250,240,.55) 46%, rgba(255,255,255,0) 62%),radial-gradient(120% 90% at 50% 38%, #F4EADB 0%, #E8DAC6 55%, #D6C1A3 100%);
+  box-shadow:12px 12px 0 -1px var(--cream), 12px 12px 0 0 var(--brass)}
+.s-emblem::before{content:"";position:absolute;inset:14px;border:1px solid rgba(168,137,79,.45);border-radius:1px;pointer-events:none;z-index:-1}
+.s-emblem::after{content:"SK";position:absolute;right:-.06em;bottom:-.28em;font-family:var(--display);font-style:italic;font-size:15rem;line-height:1;color:rgba(122,86,65,.055);pointer-events:none;z-index:-2}
+.s-emblem .em-logo{width:min(58%,250px);aspect-ratio:1/1;border-radius:50%;object-fit:cover;box-shadow:0 18px 40px -14px rgba(62,42,32,.55), 0 0 0 1px rgba(168,137,79,.35)}
+.s-emblem figcaption{display:grid;justify-items:center;gap:12px}
+.s-emblem .em-k{font-size:.7rem;letter-spacing:.22em;line-height:1.7;max-width:22em;text-transform:uppercase;font-weight:600;color:var(--brass-ink)}
+.s-emblem .em-rule{width:48px;height:1px;background:var(--brass)}
+.s-emblem .em-t{font-family:var(--display);font-style:italic;font-size:1.35rem;text-wrap:balance;line-height:1.15;color:var(--choc)}
 .today-line{display:inline-flex;align-items:center;gap:10px;margin-top:22px;font-size:.92rem;color:var(--milk)}
 .today-line::before{content:"";width:8px;height:8px;border-radius:50%;background:var(--sand);flex:none}
 .today-line.open::before{background:#6E8B4E;box-shadow:0 0 0 4px rgba(110,139,78,.18)}
@@ -469,6 +476,8 @@ footer a{color:#E9D9B6}
   .brand{height:72px}
   .s-hero{padding:64px 0 88px}
   .s-grid{grid-template-columns:7fr 5fr;gap:64px;align-items:end}
+  .s-emblem{aspect-ratio:4/5;max-width:none;width:auto;justify-self:stretch;gap:30px;padding:40px 48px}
+  .s-emblem .em-t{font-size:1.6rem}
   .doors{padding-bottom:96px}
   .doors-grid{grid-template-columns:7fr 5fr;gap:20px}
   .dcard{padding:40px 36px 32px;min-height:440px}
@@ -588,10 +597,14 @@ footer a{color:#E9D9B6}
         </div>
         <p class="today-line" data-today></p>
       </div>
-      <div class="s-photos">
-        <figure class="ph p1"><img src="img/start_1.jpg" alt="Sandra Kinka w gabinecie Estetic Clinic" loading="eager" onerror="this.classList.add('x')"></figure>
-        <figure class="ph p2"><img src="img/start_2.jpg" alt="Gabinet Estetic Clinic w Legnicy" loading="lazy" onerror="this.classList.add('x')"></figure>
-      </div>
+      <figure class="s-emblem">
+        <img class="em-logo" src="img/start_logo.jpg" alt="Logo Estetic Clinic Sandra Kinka" loading="eager">
+        <figcaption>
+          <span class="em-k">Kosmetologia i medycyna estetyczna</span>
+          <span class="em-rule" aria-hidden="true"></span>
+          <span class="em-t">Zabiegi w Legnicy<br>i szkolenia dla kosmetologów</span>
+        </figcaption>
+      </figure>
     </div>
   </section>
 
@@ -670,7 +683,7 @@ footer a{color:#E9D9B6}
           <p class="hero-sub">Szkolenia z medycyny estetycznej dla kosmetologów w Legnicy. Prowadzę je sama, w moim gabinecie: teoria, a potem praca na modelkach.</p>
         </div>
         <div class="hero-grid">
-          <figure class="ph hero-photo"><img src="img/szkolenie_1.jpg" alt="Szkolenie w Estetic Clinic, kursantki przy pracy" loading="lazy" onerror="this.classList.add('x')"></figure>
+          <figure class="ph hero-photo"><img src="img/szkolenie_1.jpg" alt="Masterclass BTX Full Face, 27 października, Legnica" loading="lazy" onerror="this.classList.add('x')"></figure>
           <div>
             <nav class="contents" aria-label="Spis szkoleń">
               <div class="contents-cap"><span>Spis szkoleń</span><span>cena</span></div>
@@ -733,7 +746,7 @@ footer a{color:#E9D9B6}
             <p>Dokumentacja i aspekty prawne, anatomia i punkty wkłucia, preparaty i dawkowanie, kwalifikacja pacjentki, działania niepożądane i powikłania.</p>
           </li>
           <li>
-            <figure class="ph"><img src="img/szkolenie_3.jpg" alt="Praktyka na modelkach podczas szkolenia" loading="lazy" onerror="this.classList.add('x')"></figure>
+            <figure class="ph"><img src="img/szkolenie_3.jpg" alt="Zabieg wykonywany w rękawiczkach na pacjentce w gabinecie" loading="lazy" onerror="this.classList.add('x')"></figure>
             <h2>Praktyka na modelkach</h2>
             <p>Wykonujesz zabiegi samodzielnie, a ja jestem obok przy każdej modelce. Liczbę modelek podaję przy szkoleniach, gdzie jest ustalona.</p>
           </li>
